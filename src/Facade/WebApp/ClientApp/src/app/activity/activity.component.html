@@ -1,0 +1,23 @@
+<h1>Retrospective (last activity)</h1>
+<p>You could view last activities here.</p>
+
+<div>
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="!!activities">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Owner</th>
+      <th>Description</th>
+      <th>Done</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let activity of activities">
+      <td>{{ activity.Id }}</td>
+      <td>{{ activity.Creator }}</td>
+      <td>{{ activity.Description }}</td>
+      <td>{{ activity.Done }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

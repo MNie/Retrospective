@@ -1,0 +1,49 @@
+version: '3'
+volumes:
+  retrospectiveLocalDb:
+  retrospectiveLocalDbConfig:
+services:
+  database:
+    image: db
+    build:
+      context: ./storage/mongo
+      dockerfile: ./Dockerfile
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=sample
+      - MONGO_INITDB_ROOT_PASSWORD=Sample123!
+    volumes:
+      - retrospectiveLocalDb:/data/db
+      - retrospectiveLocalDbConfig:/data/configdb
+    ports:
+      - '27017-27019:27017-27019'
+  topic:
+    image: topic
+    build:
+      context: ./src
+      dockerfile: ./Topic/Dockerfile
+    ports:
+      - '2137:80'
+    depends_on:
+      - database
+    environment:
+      MongoDB__Host: database
+    hostname: topic
+  notification:
+    image: notification
+    build:
+      context: ./src
+      dockerfile: ./Notification/Dockerfile
+    ports:
+      - '2138:80'
+    hostname: notification
+  facade:
+    image: facade
+    build:
+      context: ./src
+      dockerfile: ./Facade/Dockerfile
+    ports:
+      - '2111:5000'
+    depends_on:
+      - notification
+      - topic
+    hostname: facade

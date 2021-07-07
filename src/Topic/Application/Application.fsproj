@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <IsPackable>false</IsPackable>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+        <NoWarn>NU1603</NoWarn>
+        <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Model.fs" />
+        <Compile Include="Configuration.fs" />
+        <Compile Include="Result.fs" />
+        <Compile Include="Mapper.fs" />
+        <Compile Include="Repository.fs" />
+        <Compile Include="Topics\Save.fs" />
+        <Compile Include="Topics\Update.fs" />
+        <Compile Include="Topics\GetAll.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="ably.io" Version="1.2.4" />
+      <PackageReference Include="BagnoDB" Version="0.0.11" />
+      <PackageReference Include="BagnoDB.Serializator" Version="0.0.11" />
+      <PackageReference Include="FSharp.SystemTextJson" Version="0.17.4" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Notification\Messages\Messages.fsproj" />
+      <ProjectReference Include="..\Contract\Contract.fsproj" />
+    </ItemGroup>
+
+</Project>

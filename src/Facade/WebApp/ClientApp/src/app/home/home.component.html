@@ -1,0 +1,22 @@
+<h1>Retrospective List</h1>
+<p>You could add or close topic for a retrospective discussion.</p>
+<app-create-task></app-create-task>
+<div>
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="!!topics">
+    <thead>
+    <tr>
+      <th>Mark as done</th>
+      <th>Owner</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let todo of topics">
+      <td><button (click)="markAsDone(todo)" *ngIf="!todo.Done">Mark as done</button></td>
+      <td>{{ todo.Creator }}</td>
+      <td>{{ todo.Description }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Add new Topic</h2>
+  <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+    <div class="form-group">
+      <label for="Creator">Owner</label>
+      <input type="text" class="form-control" id="Creator"
+             required
+             [(ngModel)]="model.Creator" name="Creator"
+             #Creator="ngModel">
+      <div [hidden]="Creator.valid || Creator.pristine"
+           class="alert alert-danger">
+        Owner is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="Description">Description</label>
+      <input type="text" class="form-control" id="Description"
+             required
+             [(ngModel)]="model.Description" name="Description"
+             #Description="ngModel">
+      <div [hidden]="Description.valid || Description.pristine"
+           class="alert alert-danger">
+        Description is required
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!taskForm.form.valid">Submit</button>
+    <button type="button" class="btn btn-default" (click)="reset(); taskForm.reset()">Reset</button>
+  </form>
+</div>
