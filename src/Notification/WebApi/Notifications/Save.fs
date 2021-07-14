@@ -34,7 +34,7 @@ let internal handle (ably: AblyRealtime) (ablyConfig: AblyConfig) (msg: obj) (lo
             ()
         }
     with er ->
-        logger.LogError $"Error occured while processing notification message: {er.Message}"
+        logger.LogError $"Error occurred while processing notification message: {er.Message}"
         async {
             let channel = ably.Channels.Get ablyConfig.Channels.Push.Name
             let! _ = channel.PublishAsync (ablyConfig.Channels.Push.MessageType, er.Message) |> Async.AwaitTask

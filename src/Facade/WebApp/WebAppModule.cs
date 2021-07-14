@@ -2,7 +2,6 @@ namespace WebApp
 {
     using Autofac;
     using Configuration;
-    using Controllers;
     using IO.Ably;
 
     public class WebAppModule : Module

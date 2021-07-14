@@ -39,7 +39,7 @@ module Save =
                 di.logger.Log(LogLevel.Warning, $"Expected to get a create result, but got something else: {res}")
                 return result
             | Choice2Of2 ex ->
-                di.logger.Log(LogLevel.Error, $"Error occured while processing data in repository: {ex.Message}")
+                di.logger.Log(LogLevel.Error, $"Error occurred while processing data in repository: {ex.Message}")
                 return result
         }
     

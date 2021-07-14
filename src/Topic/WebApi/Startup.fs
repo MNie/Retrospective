@@ -38,7 +38,7 @@ type Startup(configuration: IConfiguration) =
                 async {
                     match! Topic.Application.Topics.Save.trySave di msg.Data CancellationToken.None with
                     | Choice1Of2 result -> logger.LogDebug $"Process message: {result}"
-                    | Choice2Of2 err -> logger.LogError $"Error occured while processing message: {err}"
+                    | Choice2Of2 err -> logger.LogError $"Error occurred while processing message: {err}"
                     ()
                 } |> Async.RunSynchronously)
     
