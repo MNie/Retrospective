@@ -2,7 +2,6 @@
 
 open Microsoft.AspNetCore.Mvc
 open Microsoft.Extensions.Logging
-open Notification.Contract
 
 [<ApiController>]
 [<Route("[controller]")>]

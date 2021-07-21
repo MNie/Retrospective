@@ -1,1 +1,9 @@
-module Program = let [<EntryPoint>] main _ = 0
+open Expecto
+
+let tests = testList "Application - sample tests" [
+    MapperTests.tests
+]
+
+[<EntryPoint>]
+let main argv =
+    runTestsWithCLIArgs [] argv tests

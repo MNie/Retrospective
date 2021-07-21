@@ -10,11 +10,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Tests.fs" />
+        <Compile Include="WebApiTests.fs" />
         <Compile Include="Program.fs" />
+        <Content Include="appsettings.json">
+          <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+          <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Expecto" Version="9.0.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="5.0.8" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
         <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="16.9.4" />
         <PackageReference Include="xunit" Version="2.4.1" />

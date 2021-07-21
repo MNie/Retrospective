@@ -50,7 +50,7 @@ module internal ToDTO =
     let map =
         function
         | QueryResult.Create single -> mapSingle single |> DTOResult.Create
-        | QueryResult.View multiple -> multiple |> List.map (fun h -> mapSingle h) |> DTOResult.View
+        | QueryResult.View multiple -> multiple |> List.map mapSingle |> DTOResult.View
         | QueryResult.Single single -> single |> Result.bind (mapSingle >> Ok) |> DTOResult.Single
         | QueryResult.Delete single -> single |> DTOResult.Delete
         | QueryResult.Update single -> mapSingle single |> DTOResult.Update
